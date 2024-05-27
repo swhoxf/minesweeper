@@ -23,9 +23,14 @@
     <div id="main-frame" class="container">
       <div id="centered-main-frame" class="horizontal-center">
         <button id="play-button" onClick="main()">Play!</button>
-        <p id="flags-left">
-          10 flags left
-        </p>
+        <div>
+          <div id="flags-left">
+            <img class="medium-icon" src="./assets/flag-solid.svg"> 10 flags left
+          </div>
+          <div id="timer">
+            <img class="medium-icon" src="./assets/clock-solid.svg"> 00:00
+          </div>
+        </div>
         <p id="game-msg"></p>
         <div id="centered-game-frame" class="horizontal-center">
           <div id="game-frame" class="grid-container"></div>
