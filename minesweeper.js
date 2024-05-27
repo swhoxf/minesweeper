@@ -1,5 +1,6 @@
 // minesweeper.js
 var map = [];
+var playerViewMap = [];
 var numFlagsLeft = 10;
 var gameInSession = false;
 var isGameOver = false;
@@ -338,11 +339,9 @@ function main() {
     }
     if (isGameOver) {
       isGameOver = false;
-      document.getElementById("game-over-msg").remove();
     }
     if (isGameWon) {
       isGameWon = false;
-      document.getElementById("game-won-msg").remove();
     }
   } 
   gameInSession = true;

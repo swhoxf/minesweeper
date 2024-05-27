@@ -15,25 +15,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet"> 
   </head>
 
-  <body>
+  <body onload="main()">
     <h1>
       Minesweeper
     </h1>
     
     <div id="main-frame" class="container">
       <div id="centered-main-frame" class="horizontal-center">
-        <button id="play-button" onClick="main()">Play!</button>
-        <div>
-          <div id="flags-left">
-            <img class="medium-icon" src="./assets/flag-solid.svg"> 10 flags left
-          </div>
-          <div id="timer">
-            <img class="medium-icon" src="./assets/clock-solid.svg"> 00:00
+        
+        <div class="menu">
+          <button id="play-button" onClick="main()">New Game</button>
+          <div class="game-info-container horizontal-center">
+            <div id="flags-left-container">
+              <img class="medium-icon" src="./assets/flag-solid.svg"> 
+              <div id="flags-left">10 flags left</div>
+            </div>
+            <div id="timer-container">
+              <img class="medium-icon" src="./assets/clock-solid.svg">
+              <div id="timer">00:00</div>
+            </div>
           </div>
         </div>
+        
         <p id="game-msg"></p>
         <div id="centered-game-frame" class="horizontal-center">
-          <div id="game-frame" class="grid-container"></div>
+          <div id="game-frame" class="grid-container horizontal-center"></div>
         </div>
       </div>
       

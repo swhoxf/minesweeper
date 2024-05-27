@@ -136,11 +136,7 @@ button:hover {
 }
 
 .horizontal-center {
-  margin: 0;
-  position: absolute;
-  left: 50%;
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+  margin: 0 auto;
 }
 
 #play-button {
@@ -154,9 +150,10 @@ button:hover {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 0 auto;
-  width: 100px;
-  height: 50px;
+  margin: 0 auto 20px;
+  width: max-content;
+  height: max-content;
+  display: block;
 }
 
 #game-msg {
@@ -179,6 +176,22 @@ button:hover {
 .medium-icon {
   height: 20px;
   width: 20px;
+}
+
+.game-info-container {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+#timer-container, #flags-left-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.menu {
+  display: block;
 }
 
 #main-frame {
