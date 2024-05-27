@@ -7,6 +7,7 @@ body {
 
 h1 {
   text-align: center;
+  padding-top: 20px;
 }
 
 p {
@@ -27,6 +28,7 @@ button {
   display: inline-block;
   width: 30px;
   height: 30px;
+  font-size: 20px;
 }
 
 button.revealedInt {
@@ -145,14 +147,17 @@ button:hover {
   height: 50px;
 }
 
-#game-won-msg {
-  color: green;
+#game-msg {
   font-weight: bold;
+  height: 20px;
 }
 
-#game-over-msg {
+.game-won-msg {
+  color: green;
+}
+
+.game-over-msg {
   color: red;
-  font-weight: bold;
 }
 
 #play-button:hover {

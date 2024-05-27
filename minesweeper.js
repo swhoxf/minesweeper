@@ -287,24 +287,18 @@ function clickCell(cell) {
 
 function gameWonAction() {
   gameWonMsg = "You Won!";
-  p = document.createElement("P");
-  p.innerHTML = gameWonMsg;
-  p.id = "game-won-msg";
-  let gf = document.getElementById("centered-game-frame");
-  let mf = document.getElementById("centered-main-frame");
-  mf.insertBefore(p, gf);
+  let messageElement = document.getElementById('game-msg');
+  messageElement.classList.add('game-won-msg');
+  messageElement.innerHTML = gameWonMsg;
   isGameWon = true;
 }
 
 function gameLostAction() {
   isGameOver = true;
   gameOverMsg = "Game Over!";
-  p = document.createElement("P");
-  p.innerHTML = gameOverMsg;
-  p.id = "game-over-msg";
-  let gf = document.getElementById("centered-game-frame");
-  let mf = document.getElementById("centered-main-frame");
-  mf.insertBefore(p, gf);
+  let messageElement = document.getElementById('game-msg');
+  messageElement.classList.add('game-over-msg');
+  messageElement.innerHTML = gameOverMsg;
 }
 
 function rightClickCell(cell) {
