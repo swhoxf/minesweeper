@@ -23,6 +23,7 @@ button {
   color: gray;
   text-align: center;
   text-decoration: none;
+  font-weight: bold;
   display: inline-block;
   width: 30px;
   height: 30px;
