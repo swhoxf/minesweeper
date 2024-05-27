@@ -144,6 +144,16 @@ button:hover {
   height: 50px;
 }
 
+#game-won-msg {
+  color: green;
+  font-weight: bold;
+}
+
+#game-over-msg {
+  color: red;
+  font-weight: bold;
+}
+
 #play-button:hover {
   background-color: darkblue;
 }
