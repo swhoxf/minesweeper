@@ -1,0 +1,153 @@
+ /* style.css */
+
+body {
+  background-color: lightblue;
+  font-family: 'Questrial', sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+svg {
+  padding: 20px;
+}
+
+button {
+  background-color: gray; 
+  border: 2px solid rgb(50, 50, 50);
+  color: gray;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+button.revealedInt {
+  background-color: green;
+}
+
+button.revealedInt.one {
+  color: blue;
+}
+
+button.revealedInt.two {
+  color: rgb(0, 50, 0);
+}
+
+button.revealedInt.three {
+  color: red;
+}
+
+button.revealedInt.four {
+  color: purple;
+}
+
+button.revealedInt.five {
+  color: purple;
+}
+
+button.revealedInt.six {
+  color: purple;
+}
+
+button.revealedInt.seven {
+  color: purple;
+}
+
+button.revealedInt.eight {
+  color: purple;
+}
+
+button.revealedEmpty {
+  background-color: lightgreen;
+  color: lightgreen;
+}
+
+button.revealedBomb {
+  background-color: red;
+  color: red;
+}
+
+button.flagged {
+  background-color: orange;
+  color: orange;
+}
+
+button.revealedInt:hover {
+  background-color: darkgreen;
+}
+
+button.revealedEmpty:hover {
+  background-color: rgb(50, 200, 100);
+  color: rgb(50, 200, 100);
+}
+
+button.revealedBomb:hover {
+  background-color: darkred;
+  color: darkred;
+}
+
+button.flagged:hover {
+  background-color: darkorange;
+  color: darkorange;
+}
+
+button:hover {
+  background-color: darkgray;
+  color: darkgray;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+  width: 300px;
+  height: 300px;
+  justify-content: space-evenly;
+  margin: 10px;
+  border: 2px solid rgb(50, 50, 50);
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.horizontal-center {
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+#play-button {
+  background-color: blue; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 0 auto;
+  width: 100px;
+  height: 50px;
+}
+
+#play-button:hover {
+  background-color: darkblue;
+}
+
+#main-frame {
+  align-content: center;
+}
