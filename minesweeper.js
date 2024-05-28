@@ -367,6 +367,20 @@ function gameLostAction() {
   stopTimer();
 }
 
+// adds flag to cell
+function createFlagElement() {
+  let flagImg = document.createElement('img');
+  flagImg.src = './assets/flag-solid.svg';
+  flagImg.classList.add('small-icon');
+  return flagImg;
+}
+
+// removes flag from cell
+function removeFlagElement(cell) {
+  cell.removeChild(cell.firstChild);
+}
+
+// toggle flag appearing when you right click an unrevealed cell
 function rightClickCell(cell) {
   if (!isGameOver && !isGameWon) {
     if (numFlagsLeft > 0 && !cell.classList.contains("revealedInt") 
@@ -374,6 +388,7 @@ function rightClickCell(cell) {
     && !cell.classList.contains("revealedBomb")
     && !cell.classList.contains("flagged")) {
     cell.classList.add("flagged");
+    cell.appendChild(createFlagElement())
     numFlagsLeft--;
     if (checkGameWon()) {
       gameWonAction();
@@ -381,6 +396,7 @@ function rightClickCell(cell) {
     } else if (cell.classList.contains("flagged")) {
       numFlagsLeft++;
       cell.classList.remove("flagged");
+      removeFlagElement(cell);
     }
     document.getElementById("flags-left").innerHTML = numFlagsLeft.toString() + " flags left";
   }

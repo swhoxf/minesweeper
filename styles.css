@@ -73,19 +73,15 @@ button.revealedInt.eight {
 
 button.revealedEmpty {
   background-color: #ccc;
-  color: lightgreen;
   border: solid 1px gray;
 }
 
 button.revealedBomb {
   background-color: red;
-  color: red;
   border: solid 1px gray;
 }
 
 button.flagged {
-  background-color: orange;
-  color: orange;
   border: solid 1px gray;
 }
 
@@ -95,22 +91,18 @@ button.revealedInt:hover {
 
 button.revealedEmpty:hover {
   background-color: darkgray;
-  color: rgb(50, 200, 100);
 }
 
 button.revealedBomb:hover {
   background-color: darkred;
-  color: darkred;
 }
 
 button.flagged:hover {
-  background-color: darkorange;
-  color: darkorange;
+  background-color: darkgray;
 }
 
 button:hover {
   background-color: darkgray;
-  color: darkgray;
 }
 
 .grid-container {
@@ -176,6 +168,15 @@ button:hover {
 .medium-icon {
   height: 20px;
   width: 20px;
+}
+
+.small-icon {
+  height: 15px;
+  width: 15px;
+}
+
+.flagged > img {
+  filter: invert(15%) sepia(79%) saturate(7406%) hue-rotate(2deg) brightness(95%) contrast(117%);
 }
 
 .game-info-container {
