@@ -1,13 +1,39 @@
 // minesweeper.js
-var map = [];
-var playerViewMap = [];
-var numFlagsLeft = 10;
-var gameInSession = false;
-var isGameOver = false;
-var isGameWon = false;
+let map = [];
+let playerViewMap = [];
+let numFlagsLeft = 10;
+let gameInSession = false;
+let isGameOver = false;
+let isGameWon = false;
+let timeElapsed = 0; // in seconds
+let isTimerStarted = false;
+let timer = setInterval(updateTimer, 1000); // update time every second (even if the timer doesn't display it)
 
 // functionalities to add
 // - right click toggles flag and question
+
+// start timer
+function startTimer() {
+  isTimerStarted = true;
+  timeElapsed = 0;
+}
+
+// stop timer
+function stopTimer() {
+  isTimerStarted = false;
+}
+
+// timer updates every second 
+function updateTimer() {
+  // timer keeps ticking every second after player clicks first cell
+  if (isTimerStarted && !isGameOver && !isGameWon) {
+    timeElapsed += 1;
+    let minutes = Math.floor(timeElapsed / 60);
+    let minuteString = minutes.toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping: false});
+    let secondString = (timeElapsed - (minutes * 60)).toLocaleString("en-US", {minimumIntegerDigits: 2, useGrouping: false});
+    document.getElementById('timer').innerHTML = `${minuteString}\:${secondString}`;
+  }
+}
 
 // returns 2D array containing false for a bomb cell and true for a safe cell
 function createBombs() {
@@ -123,7 +149,7 @@ function createBtnCells(intMap) {
     for (let j = 0; j < 10; j++) {
       // check if there already are buttons
       const cell = document.createElement("BUTTON");
-      cell.innerHTML = intMap[i][j].toString();
+      // cell.innerHTML = intMap[i][j].toString();
       cell.addEventListener("click", function() {
         clickCell(cell);
       });
@@ -165,6 +191,7 @@ function printArray2D(arr, rows) {
   }
 }
 
+// returns string representation of integer array representing game board state
 function intToString(i) {
   switch (i) {
     case (-1): 
@@ -202,19 +229,47 @@ function intToString(i) {
   }
 }
 
+function stringToInt(str) {
+  switch (str) {
+    case ('one'): 
+      return 1;
+      break;
+    case ('two'):
+      return 2;
+      break;
+    case ('three'):
+      return 3;
+      break;
+    case ('four'):
+      return 4;
+      break;
+    case ('five'):
+      return 5;
+      break;
+    case ('six'):
+      return 6;
+      break;
+    case ('seven'):
+      return 7;
+      break;
+    case ('eight'):
+      return 8;
+      break;
+    default: 
+      break;
+  }
+}
+
 // reveals safe cells surrounding current cell 
 function revealNearbySafeCells(cell) {
   // if the cell clicked is empty, reveal it
   // if its nearby cells are empty, reveal them
   // stop once you reveal the first layer of int cells
-  if (cell.innerHTML == "-1") {
+  if (cell.classList.contains("bomb")) {
     return;
   } else if (cell.classList.contains("flagged")) {
     return;
-  } else if (Number(cell.innerHTML) > 0) {
-    cell.classList.add("revealedInt");
-    return;
-  } else {
+  } else if (cell.classList.contains("zero")) {
     cell.classList.add("revealedEmpty");
     let r = Number(cell.getAttribute("row"));
     let c = Number(cell.getAttribute("col"));
@@ -237,8 +292,11 @@ function revealNearbySafeCells(cell) {
       } else {
         revealNearbySafeCells(map[row][col]);
       }
-    
     }
+  } else {
+    cell.classList.add("revealedInt");
+    cell.innerHTML = stringToInt(cell.classList[0]);
+    return;
   }
   return;
 }
@@ -270,14 +328,19 @@ function checkGameWon() {
 
 function clickCell(cell) {
   if (!isGameOver && !isGameWon) {
+    if (!isTimerStarted) {
+      startTimer();
+    }
+
     if (!cell.classList.contains("flagged")) {
-      if (cell.innerHTML == "-1") {
+      if (cell.classList.contains("bomb")) {
         cell.classList.add("revealedBomb");
         gameLostAction();
-      } else if (cell.innerHTML == "0") {
+      } else if (cell.classList.contains('zero')) {
         revealNearbySafeCells(cell);
       } else {
         cell.classList.add("revealedInt");
+        cell.innerHTML = stringToInt(cell.classList[0]);
         if (checkGameWon()) {
           gameWonAction();
         }
@@ -292,6 +355,7 @@ function gameWonAction() {
   messageElement.classList.add('game-won-msg');
   messageElement.innerHTML = gameWonMsg;
   isGameWon = true;
+  stopTimer();
 }
 
 function gameLostAction() {
@@ -300,6 +364,7 @@ function gameLostAction() {
   let messageElement = document.getElementById('game-msg');
   messageElement.classList.add('game-over-msg');
   messageElement.innerHTML = gameOverMsg;
+  stopTimer();
 }
 
 function rightClickCell(cell) {
@@ -329,6 +394,10 @@ function init() {
   gameInSession = true;
   isGameOver = false;
   document.getElementById("flags-left").innerHTML = "10 flags left";
+  document.getElementById('game-msg').innerHTML = '';
+  timeElapsed = 0;
+  document.getElementById('timer').innerHTML = '00:00';
+  isTimerStarted = false;
 }
 
 function main() {
