@@ -326,6 +326,13 @@ function checkGameWon() {
   return true;
 }
 
+function createBombElement() {
+  let bombElem = document.createElement('img');
+  bombElem.src = './assets/bomb-solid.svg';
+  bombElem.classList.add('small-icon');
+  return bombElem;
+}
+
 function clickCell(cell) {
   if (!isGameOver && !isGameWon) {
     if (!isTimerStarted) {
@@ -335,6 +342,7 @@ function clickCell(cell) {
     if (!cell.classList.contains("flagged")) {
       if (cell.classList.contains("bomb")) {
         cell.classList.add("revealedBomb");
+        cell.appendChild(createBombElement());
         gameLostAction();
       } else if (cell.classList.contains('zero')) {
         revealNearbySafeCells(cell);
